@@ -1,65 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <title>Array</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <title>Привет, Vue</title>
 </head>
 
 <body>
   <div class="container">
-    <form action="" class="form-inline">
-      <input v-model.number="a" @keyup.13="calculate" class="form-control">
-      <select v-model="operator" class="form-control">
-        <option>+</option>
-        <option>-</option>
-        <option>/</option>
-        <option>*</option>
-      </select>
-      <input v-model.number="b" @keyup.13="calculate" class="form-control">
-      <button @click.prevent="calculate" type="submit" class="btn btn-primary">
-        Расчитать
-      </button>
-      <h1>{{a}} {{operator}} {{b}} = {{c}} </h1>
-    </form>
-    <pre>
-            {{ $data }}
-    </pre>
+    <story plot="Моя лошадь потрясающая."></story>
+    <story plot="Нарвалы изобрели шашлык."></story>
+    <story plot="Тёмная сторона Силы сильнее."></story>
+
   </div>
+
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
-<script>
+<template id="story-template">
+  <h1>{{ plot }}</h1>
+</template>
+<script src="vue.js"></script>
+<script type="text/javascript">
+  Vue.component('story', {
+    props: ['plot'],
+    template: '#story-template'
+  });
+
   new Vue({
     el: '.container',
-    data: {
-      a: 1,
-      b: 2,
-      c: null,
-      operator: '',
-    },
-    methods: {
-      calculate: function (e) {
-        // e.preventDefault();
-        switch (this.operator) {
-          case "+":
-            this.c = this.a + this.b
-            break;
-          case "-":
-            this.c = this.a - this.b
-            break;
-          case "*":
-            this.c = this.a * this.b
-            break;
-          case "/":
-            this.c = this.a / this.b
-            break;
-        }
-      }
-    }
-  });
+  })
 </script>
 
 </html>
